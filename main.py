@@ -1,14 +1,15 @@
 import situacao
-import palavras
 import random
 
+with open('palavras.txt',  encoding='utf-8') as file:
+    palavras = file.readlines()
 status = situacao.situacao
-palavra = random.choice(palavras.palavras)
+palavra = random.choice(palavras)
 
 
 class Forca():
     def __init__(self, palavra):
-        self.chave = palavra
+        self.chave = palavra[:len(palavra)-1].lower()
         self.acertos = []
         self.erros = 0
         self.mostrar = ""
@@ -18,7 +19,7 @@ class Forca():
         if self.chave == self.mostrar:
             print('Você venceu!')
         else:
-            letra = input('Digite uma letra: ')
+            letra = input('Digite uma letra: ').lower()
 
             if letra in self.chave:
                 self.acertos.append(letra)
@@ -46,6 +47,7 @@ class Forca():
         if self.erros == 6:
             print(status[6])
             print("Você perdeu!")
+            print(f'A palavra era {self.chave}')
         else:
             self.quadro()
 

@@ -1,1 +1,0 @@
-palavras = ['naruto', 'sakura', 'sasuke','kakashi']
